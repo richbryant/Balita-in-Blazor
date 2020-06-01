@@ -1,0 +1,47 @@
+﻿@inherits LayoutComponentBase
+
+<Layout>
+    <LayoutHeader>
+        <div class="top-bar">
+            <Container>
+                <Row>
+                    <Column ColumnSize="ColumnSize.Is9" Class="social">
+                        <Blazorise.Link To="/">
+                            <Icon Name="@FontAwesomeIcons.Twitter" />
+                        </Blazorise.Link>
+                        <Blazorise.Link To="/">
+                            <Icon Name="@FontAwesomeIcons.Facebook" />
+                        </Blazorise.Link>
+                        <Blazorise.Link To="/">
+                            <Icon Name="@FontAwesomeIcons.Instagram" />
+                        </Blazorise.Link>
+                        <Blazorise.Link To="/">
+                            <Icon Name="@FontAwesomeIcons.Youtube" />
+                        </Blazorise.Link>
+                        <Blazorise.Link To="/">
+                            <Icon Name="@FontAwesomeIcons.Vimeo" />
+                        </Blazorise.Link>
+                        <Blazorise.Link To="/">
+                            <Icon Name="@FontAwesomeIcons.Snapchat" />
+                        </Blazorise.Link>
+                    </Column>
+                    <Column ColumnSize="ColumnSize.Is3" Class="search-top">
+                        <form action="#" class="search-top-form">
+                            <span class="@($"{FontAwesomeIcons.Search}  icon")"></span>
+                            <input type="text" placeholder="Search by keyword"/>
+                        </form>
+
+                    </Column>
+                </Row>
+            </Container>
+        </div>
+    </LayoutHeader>
+    <LayoutContent>
+        <SiteLogo />
+        @Body
+    </LayoutContent>
+    <LayoutFooter>
+        Footer
+    </LayoutFooter>
+</Layout>
+
