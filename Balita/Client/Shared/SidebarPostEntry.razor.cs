@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Balita.Shared.Models.Posts;
 using Microsoft.AspNetCore.Components;
 
 namespace Balita.Client.Shared
 {
-    public partial class SidebarPostEntry
+    public partial class SidebarPostEntry : IPostOutline
     {
         [Parameter] 
         public string LinkUrl { get; set; } = "/";
