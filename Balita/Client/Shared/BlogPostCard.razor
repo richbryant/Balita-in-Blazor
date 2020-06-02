@@ -1,0 +1,15 @@
+﻿<Card Margin="Margin.Is4.FromBottom" Class="h-100 w-100">
+    <Blazorise.Link To="@LinkUrl">
+        <CardImage Source="@ImageUrl"></CardImage>
+    </Blazorise.Link>
+    <CardBody>
+        <div class="blog-content-body">
+            <div class="post-meta">
+                <span class="category">@Category</span>
+                <span class="mr-2">@PostedDate </span> &bullet;
+                <span class="ml-2"><span class="fa fa-comments"></span> @CommentCount</span>
+            </div>
+            <h4>@PostHeadline</h4>
+        </div>
+    </CardBody>
+</Card>

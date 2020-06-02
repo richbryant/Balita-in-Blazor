@@ -1,0 +1,23 @@
+﻿<Card>
+    <Row>
+        <Column ColumnSize="ColumnSize.Is4.OnTablet">
+            <Blazorise.Link To="@LinkUrl">
+                <img src="@ImageUrl" class="w-100" />
+            </Blazorise.Link>
+        </Column>
+        <Column ColumnSize="ColumnSize.Is8.OnTablet">
+            <Blazorise.Link To="@ImageUrl">
+                <CardBody Class="px-3">
+                    <span class="text">
+                        <div class="post-meta">
+                            <span class="category">@Category</span>
+                            <span class="mr-2">@PostedDate </span> &bullet;
+                            <span class="ml-2"><span class="fa fa-comments"></span> @CommentCount</span>
+                        </div>
+                        <h5>@PostHeadline</h5>
+                    </span>
+                </CardBody>
+            </Blazorise.Link>
+        </Column>
+    </Row>
+</Card>
