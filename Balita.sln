@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Balita.Client", "Balita\Cli
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Balita.Shared", "Balita\Shared\Balita.Shared.csproj", "{3CA997F2-EC13-4977-ABD5-907324B79B11}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Balita.Data", "Balita.Data\Balita.Data.csproj", "{850DB927-D98C-48FE-A05E-0DD6B68E90DA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{3CA997F2-EC13-4977-ABD5-907324B79B11}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3CA997F2-EC13-4977-ABD5-907324B79B11}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3CA997F2-EC13-4977-ABD5-907324B79B11}.Release|Any CPU.Build.0 = Release|Any CPU
+		{850DB927-D98C-48FE-A05E-0DD6B68E90DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{850DB927-D98C-48FE-A05E-0DD6B68E90DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{850DB927-D98C-48FE-A05E-0DD6B68E90DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{850DB927-D98C-48FE-A05E-0DD6B68E90DA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

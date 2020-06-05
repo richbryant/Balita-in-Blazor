@@ -10,6 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Balita.Data\Balita.Data.csproj" />
     <ProjectReference Include="..\Client\Balita.Client.csproj" />
     <ProjectReference Include="..\Shared\Balita.Shared.csproj" />
   </ItemGroup>

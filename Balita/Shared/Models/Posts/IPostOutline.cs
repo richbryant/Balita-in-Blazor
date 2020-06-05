@@ -4,16 +4,16 @@ namespace Balita.Shared.Models.Posts
 {
     public interface IPostOutline
     {
-        public string LinkUrl { get; set; }
+        string LinkUrl { get; set; }
 
-        public string ImageUrl { get; set; }
+        string ImageUrl { get; set; }
 
-        public string Category { get; set; } 
+        string Category { get; set; } 
 
-        public string PostedDate { get; set; }
+        string PostedDate { get; set; }
 
-        public int CommentCount { get; set; }
+        int CommentCount { get; set; }
         
-        public string PostHeadline { get; set; }
+        string PostHeadline { get; set; }
     }
 }
