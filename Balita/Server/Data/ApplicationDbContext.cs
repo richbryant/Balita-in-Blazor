@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.ApiAuthorization.IdentityServer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using Balita.Data.Models;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Balita.Server.Data
 {
@@ -28,6 +29,10 @@ namespace Balita.Server.Data
                 e.Property(p => p.PostText).IsRequired();
                 e.Property(p => p.Image).IsRequired();
                 e.Property(p => p.Image).HasColumnType("VARBINARY(MAX)");
+                e.HasOne(p => p.Category)
+                    .WithMany(c => c.Posts)
+                    .HasForeignKey(c => c.CategoryId)
+                    .IsRequired();
             });
 
             builder.Entity<Category>(e =>
@@ -35,19 +40,32 @@ namespace Balita.Server.Data
                 e.HasKey(c => c.Id);
                 e.HasIndex(c => c.Name);
                 e.Property(c => c.Name).IsRequired();
+                e.HasMany(c => c.Posts)
+                    .WithOne(p => p.Category)
+                    .IsRequired();
             });
 
-            builder.Entity<Post>()
-                .HasOne(p => p.Category)
-                .WithMany(c => c.Posts)
-                .IsRequired();
-            builder.Entity<Category>()
-                .HasMany(c => c.Posts)
-                .WithOne(p => p.Category)
-                .IsRequired();
+            builder.Entity<Comment>(e =>
+            {
+                e.HasKey(c => c.Id);
+                e.HasIndex(c => c.Username);
+                e.HasIndex(C => C.PostId);
+                e.HasOne(c => c.Parent)
+                    .WithMany(c => c.Children)
+                    .HasForeignKey(c => c.ResponseTo)
+                    .OnDelete(DeleteBehavior.NoAction);
+                e.HasOne(c => c.Post)
+                    .WithMany(p => p.Comments)
+                    .HasForeignKey(c => c.PostId);
+            });
+
+            
+            base.OnModelCreating(builder);
+            // configure Identity properly
         }
 
         public DbSet<Post> Posts { get; set; }
         public DbSet<Category> Categories { get; set; }
+        public DbSet<Comment> Comments { get; set; }
     }
 }

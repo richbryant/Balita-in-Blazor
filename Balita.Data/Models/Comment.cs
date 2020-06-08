@@ -1,4 +1,6 @@
-﻿namespace Balita.Data.Models
+﻿using System.Collections.Generic;
+
+namespace Balita.Data.Models
 {
     public class Comment
     {
@@ -9,5 +11,8 @@
         public string UserId { get; set; }
         public string CommentText { get; set; }
 
+        public Post Post { get; set; }
+        public Comment Parent { get; set; }
+        public List<Comment> Children { get; set; }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Balita.Data.Models
 {
@@ -13,5 +14,6 @@ namespace Balita.Data.Models
         public byte[] Image { get; set; }
 
         public Category Category { get; set; }
+        public List<Comment> Comments { get; set; }
     }
 }
