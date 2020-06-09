@@ -1,10 +1,8 @@
-﻿using Balita.Server.Models;
-using IdentityServer4.EntityFramework.Options;
+﻿using IdentityServer4.EntityFramework.Options;
 using Microsoft.AspNetCore.ApiAuthorization.IdentityServer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using Balita.Data.Models;
-using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Balita.Server.Data
 {
@@ -33,6 +31,7 @@ namespace Balita.Server.Data
                     .WithMany(c => c.Posts)
                     .HasForeignKey(c => c.CategoryId)
                     .IsRequired();
+                
             });
 
             builder.Entity<Category>(e =>
@@ -49,14 +48,15 @@ namespace Balita.Server.Data
             {
                 e.HasKey(c => c.Id);
                 e.HasIndex(c => c.Username);
-                e.HasIndex(C => C.PostId);
+                e.HasIndex(c => c.PostId);
                 e.HasOne(c => c.Parent)
                     .WithMany(c => c.Children)
                     .HasForeignKey(c => c.ResponseTo)
                     .OnDelete(DeleteBehavior.NoAction);
                 e.HasOne(c => c.Post)
                     .WithMany(p => p.Comments)
-                    .HasForeignKey(c => c.PostId);
+                    .HasForeignKey(c => c.PostId)
+                    .IsRequired(false);
             });
 
             

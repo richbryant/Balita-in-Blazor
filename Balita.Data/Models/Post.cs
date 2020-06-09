@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Identity;
+using System;
 using System.Collections.Generic;
 
 namespace Balita.Data.Models
@@ -12,6 +13,10 @@ namespace Balita.Data.Models
         public string PostHeadline { get; set; }
         public string PostText { get; set; }
         public byte[] Image { get; set; }
+
+        public string UserId { get; set; }
+
+        public ApplicationUser User { get; set; }
 
         public Category Category { get; set; }
         public List<Comment> Comments { get; set; }
