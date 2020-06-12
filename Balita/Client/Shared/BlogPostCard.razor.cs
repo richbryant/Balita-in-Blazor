@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Balita.Shared.Models.Posts;
 using Microsoft.AspNetCore.Components;
 
 namespace Balita.Client.Shared
 {
-    public partial class BlogPostCard
+    public partial class BlogPostCard : IPostOutline
     {
         [Parameter] 
         public string LinkUrl { get; set; } = "/";

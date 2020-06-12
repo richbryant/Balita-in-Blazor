@@ -1,9 +1,10 @@
 ﻿using System;
+using Balita.Shared.Models.Posts;
 using Microsoft.AspNetCore.Components;
 
 namespace Balita.Client.Shared
 {
-    public partial class HorizontalCard
+    public partial class HorizontalCard : IPostOutline
     {
         [Parameter] 
         public string LinkUrl { get; set; } = "/";
