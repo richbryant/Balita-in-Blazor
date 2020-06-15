@@ -16,12 +16,14 @@ namespace Balita.Server.Data.Repositories.Contracts
 
          TryAsync<List<Post>> GetPostsByCategory(int categoryId, int count);
 
-         TryAsync<Post> GetPostById(int id);
+         TryAsync<List<Post>> GetPostsByCategory(Option<int> categoryId, Option<int> count);
+
+         TryOptionAsync<Post> GetPostById(int id);
          
-         TryAsync<Post> AddPost(Post newPost);
+         TryOptionAsync<Post> AddPost(Post newPost);
 
-         TryAsync<Post> UpdatePost(Post newPost);
+         TryOptionAsync<Post> UpdatePost(Post newPost);
 
-         TryAsync<int> DeletePost(int postId);
+         TryOptionAsync<int> DeletePost(int postId);
     }
 }

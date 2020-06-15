@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Balita.Data;
 using Balita.Server.Data.Repositories.Contracts;
 using static LanguageExt.Prelude;
 
@@ -48,29 +49,36 @@ namespace Balita.Server.Data.Repositories.Implementations
                     .AsNoTracking()
                     .ToListAsync());
 
-        public TryAsync<Post> GetPostById(int id)
+        public TryAsync<List<Post>> GetPostsByCategory(Option<int> categoryId, Option<int> count)
             => TryAsync(async () =>
+                await _context.Posts.Where(x => Some(x.CategoryId) == categoryId)
+                    .TakeOption(count)
+                    .AsNoTracking()
+                    .ToListAsync());
+
+        public TryOptionAsync<Post> GetPostById(int id)
+            => TryOptionAsync(async () =>
                 await _context.Posts.
                     FirstOrDefaultAsync(x => x.Id == id));
 
-        public TryAsync<Post> AddPost(Post newPost)
-            => TryAsync(async () =>
+        public TryOptionAsync<Post> AddPost(Post newPost)
+            => TryOptionAsync(async () =>
             {
                 await _context.Posts.AddAsync(newPost);
                 await _context.SaveChangesAsync();
                 return newPost;
             });
 
-        public TryAsync<Post> UpdatePost(Post newPost)
-            => TryAsync(async () =>
+        public TryOptionAsync<Post> UpdatePost(Post newPost)
+            => TryOptionAsync(async () =>
             {
                 _context.Entry(newPost).State = EntityState.Modified;
                 await _context.SaveChangesAsync();
                 return newPost;
             });
 
-        public TryAsync<int> DeletePost(int postId)
-            => TryAsync(async () =>
+        public TryOptionAsync<int> DeletePost(int postId)
+            => TryOptionAsync(async () =>
             {
                 var item = _context.Posts.FindAsync(postId);
                 _context.Entry(item).State = EntityState.Modified;

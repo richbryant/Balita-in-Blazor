@@ -7,6 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Balita.Server.Data;
+using Balita.Server.Data.Repositories.Contracts;
 
 namespace Balita.Server
 {
@@ -32,6 +33,8 @@ namespace Balita.Server
 
             services.AddIdentityServer()
                 .AddApiAuthorization<ApplicationUser, ApplicationDbContext>();
+
+            services.AddTransient<IPostsRepository, IPostsRepository>();
 
             services.AddAuthentication()
                 .AddIdentityServerJwt();
